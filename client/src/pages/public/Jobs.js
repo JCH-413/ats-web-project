@@ -32,7 +32,7 @@ const Jobs = () => {
   return (
     <div className="page-container fade-in">
       <div className="page-header">
-        <h1>🔍 Browse Openings</h1>
+        <h1>ðŸ” Browse Openings</h1>
         <p>Find your next opportunity at OpsNex across our offices in Pakistan</p>
       </div>
 
@@ -76,17 +76,17 @@ const Jobs = () => {
             <div className="job-header">
               <div>
                 <div className="job-title">{job.title}</div>
-                <div className="job-company">OpsNex — {job.branch}</div>
+                <div className="job-company">OpsNex â€” {job.branch}</div>
               </div>
             </div>
             <div className="job-meta">
-              <span className="job-meta-item">📍 {job.branch}</span>
-              <span className="job-meta-item">🏢 {job.department}</span>
-              <span className="job-meta-item">💼 {job.type}</span>
+              <span className="job-meta-item">ðŸ“ {job.branch}</span>
+              <span className="job-meta-item">ðŸ¢ {job.department}</span>
+              <span className="job-meta-item">ðŸ’¼ {job.type}</span>
             </div>
             <p className="job-description">{job.description}</p>
             <div className="job-footer">
-              <span className="job-seats">🟢 {job.seats} seats</span>
+              <span className="job-seats">ðŸŸ¢ {job.seats} seats</span>
               <Link to={`/jobs/${job.id}`} className="btn btn-primary btn-sm">Apply Now</Link>
             </div>
           </div>
@@ -95,7 +95,7 @@ const Jobs = () => {
 
       {filteredJobs.length === 0 && (
         <div className="empty-state">
-          <div className="empty-icon">🔍</div>
+          <div className="empty-icon">ðŸ”</div>
           <h3>No jobs found</h3>
           <p>Try adjusting your search or filters</p>
         </div>
@@ -105,3 +105,4 @@ const Jobs = () => {
 };
 
 export default Jobs;
+

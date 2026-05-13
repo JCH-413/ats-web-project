@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 const JobDetail = () => {
   const { id } = useParams();
 
-  // Dummy job data — will be replaced with API call
+  // Dummy job data â€” will be replaced with API call
   const job = {
     id: id,
     title: 'Senior React Developer',
@@ -36,7 +36,7 @@ const JobDetail = () => {
   return (
     <div className="page-container fade-in">
       <Link to="/jobs" style={{ color: 'var(--primary-light)', fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
-        ← Back to Jobs
+        â† Back to Jobs
       </Link>
 
       <div className="grid-2" style={{ gridTemplateColumns: '2fr 1fr' }}>
@@ -45,34 +45,34 @@ const JobDetail = () => {
           <div className="card" style={{ marginBottom: '1.5rem' }}>
             <div style={{ marginBottom: '1rem' }}>
               <h1 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '0.5rem' }}>{job.title}</h1>
-              <div style={{ color: 'var(--primary-light)', fontWeight: 600, marginBottom: '1rem' }}>OpsNex — {job.branch}</div>
+              <div style={{ color: 'var(--primary-light)', fontWeight: 600, marginBottom: '1rem' }}>OpsNex â€” {job.branch}</div>
               <div className="job-meta">
-                <span className="job-meta-item">📍 {job.branch}</span>
-                <span className="job-meta-item">🏢 {job.department}</span>
-                <span className="job-meta-item">💼 {job.type}</span>
-                <span className="job-meta-item">🟢 {job.seats} seats available</span>
+                <span className="job-meta-item">ðŸ“ {job.branch}</span>
+                <span className="job-meta-item">ðŸ¢ {job.department}</span>
+                <span className="job-meta-item">ðŸ’¼ {job.type}</span>
+                <span className="job-meta-item">ðŸŸ¢ {job.seats} seats available</span>
               </div>
             </div>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.95rem' }}>{job.description}</p>
           </div>
 
           <div className="card" style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem' }}>📋 Requirements</h3>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem' }}>ðŸ“‹ Requirements</h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
               {job.requirements.map((req, i) => (
                 <li key={i} style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', display: 'flex', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--success)' }}>✓</span> {req}
+                  <span style={{ color: 'var(--success)' }}>âœ“</span> {req}
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="card">
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem' }}>🎁 Benefits</h3>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem' }}>ðŸŽ Benefits</h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
               {job.benefits.map((ben, i) => (
                 <li key={i} style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', display: 'flex', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--primary-light)' }}>★</span> {ben}
+                  <span style={{ color: 'var(--primary-light)' }}>â˜…</span> {ben}
                 </li>
               ))}
             </ul>
@@ -98,7 +98,7 @@ const JobDetail = () => {
               </div>
             </div>
             <Link to="/login" className="btn btn-primary" style={{ width: '100%' }}>
-              📄 Apply Now
+              ðŸ“„ Apply Now
             </Link>
             <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.75rem' }}>
               You need to <Link to="/login" style={{ color: 'var(--primary-light)' }}>login</Link> to apply
@@ -111,3 +111,4 @@ const JobDetail = () => {
 };
 
 export default JobDetail;
+
