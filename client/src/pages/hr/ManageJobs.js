@@ -36,7 +36,6 @@ const ManageJobs = () => {
         </button>
       </div>
 
-      {/* New Job Form */}
       {showForm && (
         <div className="card slide-up" style={{ marginBottom: '2rem' }}>
           <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>Create New Job Posting</h3>
@@ -85,7 +84,6 @@ const ManageJobs = () => {
         </div>
       )}
 
-      {/* Jobs Table */}
       <div className="table-container">
         <div className="table-header">
           <h3>Active Job Postings</h3>
