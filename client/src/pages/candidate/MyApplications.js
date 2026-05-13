@@ -31,7 +31,7 @@ const MyApplications = () => {
   return (
     <div className="page-container fade-in">
       <div className="page-header">
-        <h1>ðŸ“„ My Applications</h1>
+        <h1>My Applications</h1>
         <p>Track the status of all your job applications</p>
       </div>
 
@@ -64,17 +64,17 @@ const MyApplications = () => {
               <tr key={app.id}>
                 <td style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{app.position}</td>
                 <td>{app.department}</td>
-                <td><span className="job-meta-item">ðŸ“ {app.branch}</span></td>
+                <td><span className="job-meta-item">{app.branch}</span></td>
                 <td><span className={`badge ${getStatusBadge(app.status)}`}>{app.status}</span></td>
                 <td>{app.date}</td>
-                <td><a href={app.resumeURL} className="btn btn-secondary btn-sm" target="_blank" rel="noreferrer">ðŸ“Ž View</a></td>
+                <td><a href={app.resumeURL} className="btn btn-secondary btn-sm" target="_blank" rel="noreferrer">View</a></td>
               </tr>
             ))}
           </tbody>
         </table>
         {filtered.length === 0 && (
           <div className="empty-state">
-            <div className="empty-icon">ðŸ“­</div>
+            <div className="empty-icon"></div>
             <h3>No applications with this status</h3>
             <p>Try selecting a different filter</p>
           </div>
