@@ -28,11 +28,11 @@ const ManageJobs = () => {
     <div className="page-container fade-in">
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
         <div>
-          <h1>💼 Manage Jobs</h1>
+          <h1>ðŸ’¼ Manage Jobs</h1>
           <p>Create, edit, and manage job postings across branches</p>
         </div>
         <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
-          {showForm ? '✕ Cancel' : '➕ Post New Job'}
+          {showForm ? 'âœ• Cancel' : 'âž• Post New Job'}
         </button>
       </div>
 
@@ -78,7 +78,7 @@ const ManageJobs = () => {
               <textarea name="description" className="form-control" rows="4" placeholder="Describe the role, responsibilities, and qualifications..." value={formData.description} onChange={handleChange} style={{ resize: 'vertical' }}></textarea>
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <button type="submit" className="btn btn-success">✓ Publish Job</button>
+              <button type="submit" className="btn btn-success">âœ“ Publish Job</button>
               <button type="button" className="btn btn-secondary" onClick={() => setShowForm(false)}>Cancel</button>
             </div>
           </form>
@@ -109,7 +109,7 @@ const ManageJobs = () => {
               <tr key={job.id}>
                 <td style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{job.title}</td>
                 <td>{job.department}</td>
-                <td><span className="job-meta-item">📍 {job.branch}</span></td>
+                <td><span className="job-meta-item">ðŸ“ {job.branch}</span></td>
                 <td>{job.type}</td>
                 <td>{job.seats}</td>
                 <td style={{ color: 'var(--primary-light)', fontWeight: 600 }}>{job.applicants}</td>
@@ -120,8 +120,8 @@ const ManageJobs = () => {
                 </td>
                 <td>
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button className="btn btn-secondary btn-sm">✏️</button>
-                    <button className="btn btn-danger btn-sm">🗑️</button>
+                    <button className="btn btn-secondary btn-sm">âœï¸</button>
+                    <button className="btn btn-danger btn-sm">ðŸ—‘ï¸</button>
                   </div>
                 </td>
               </tr>
