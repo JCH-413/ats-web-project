@@ -31,6 +31,14 @@ app.get('/', (req, res) => {
   res.send('OpsNex ATS API is running');
 });
 
+// Centralized error handler — returns JSON for Multer/upload and other errors.
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err);
+  const status = err.status || err.statusCode || 500;
+  res.status(status).json({ message: err.message || 'Internal server error' });
+});
+
 const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
