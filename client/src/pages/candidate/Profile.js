@@ -14,7 +14,7 @@ const Profile = () => {
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
 
-  // Resume/Cover Letter upload states
+  // Resume upload states
   const [uploadingResume, setUploadingResume] = useState(false);
   const [resumeName, setResumeName] = useState(user?.resumeName || '');
 
@@ -42,7 +42,6 @@ const Profile = () => {
     setSuccess('');
 
     try {
-      // Endpoint expects name and phone for profile updates.
       // User can implement PUT /api/auth/profile in authController.js
       await api.put('/auth/profile', {
         name: formData.name,
@@ -70,7 +69,7 @@ const Profile = () => {
       uploadData.append('resume', file);
 
       // User can implement POST /api/auth/resume in authController.js
-      const { data } = await api.post('/auth/resume', uploadData, {
+      await api.post('/auth/resume', uploadData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       
