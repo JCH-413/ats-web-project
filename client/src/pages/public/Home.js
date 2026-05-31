@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import api from '../../services/api';
 
 const Home = () => {
-  const featuredJobs = [
-    { id: 1, title: 'Senior React Developer', department: 'Engineering', branch: 'Islamabad', seats: 3, type: 'Full-time' },
-    { id: 2, title: 'UI/UX Designer', department: 'Design', branch: 'Lahore', seats: 2, type: 'Full-time' },
-    { id: 3, title: 'Backend Engineer', department: 'Engineering', branch: 'Karachi', seats: 4, type: 'Full-time' },
-    { id: 4, title: 'DevOps Engineer', department: 'Infrastructure', branch: 'Remote', seats: 1, type: 'Contract' },
-    { id: 5, title: 'Product Manager', department: 'Product', branch: 'Islamabad', seats: 2, type: 'Full-time' },
-    { id: 6, title: 'QA Engineer', department: 'Quality Assurance', branch: 'Lahore', seats: 3, type: 'Full-time' },
-  ];
+  const [featuredJobs, setFeaturedJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchFeaturedJobs = async () => {
+      try {
+        const { data } = await api.get('/jobs');
+        // Filter only open jobs and show the first 6
+        const openJobs = Array.isArray(data) 
+          ? data.filter(job => job.isOpen !== false) 
+          : [];
+        setFeaturedJobs(openJobs.slice(0, 6));
+      } catch (err) {
+        console.error('Error fetching jobs:', err);
+        setError('Failed to fetch latest job openings. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFeaturedJobs();
+  }, []);
 
   return (
     <div className="fade-in">
@@ -42,31 +58,46 @@ const Home = () => {
           <Link to="/jobs" className="btn btn-secondary btn-sm">View All →</Link>
         </div>
 
-        <div className="grid-3">
-          {featuredJobs.map((job) => (
-            <div className="job-card slide-up" key={job.id}>
-              <div className="job-header">
-                <div>
-                  <div className="job-title">{job.title}</div>
-                  <div className="job-company">OpsNex — {job.branch}</div>
+        {loading ? (
+          <div style={{ textAlign: 'center', padding: '3rem 0', color: 'var(--text-muted)' }}>
+            <p>Loading open positions...</p>
+          </div>
+        ) : error ? (
+          <div style={{ textAlign: 'center', padding: '3rem 0', color: 'var(--danger)' }}>
+            <p>{error}</p>
+          </div>
+        ) : featuredJobs.length === 0 ? (
+          <div className="empty-state card">
+            <h3>No featured openings at the moment</h3>
+            <p>We don't have any active job posts right now. Check back soon or create a profile to stay updated!</p>
+            <Link to="/jobs" className="btn btn-secondary btn-sm" style={{ marginTop: '1rem' }}>Browse All Jobs</Link>
+          </div>
+        ) : (
+          <div className="grid-3">
+            {featuredJobs.map((job) => (
+              <div className="job-card slide-up" key={job._id || job.id}>
+                <div className="job-header">
+                  <div>
+                    <div className="job-title">{job.title}</div>
+                    <div className="job-company">OpsNex — {job.branch?.name || job.branch || 'Multiple Locations'}</div>
+                  </div>
+                </div>
+                <div className="job-meta">
+                  <span className="job-meta-item">📍 {job.branch?.name || job.branch || 'Remote'}</span>
+                  <span className="job-meta-item">🏢 {job.department}</span>
+                  <span className="job-meta-item">💼 {job.type || 'Full-time'}</span>
+                </div>
+                <p className="job-description">
+                  {job.description || 'We are looking for talented professionals to join our growing team. Work on cutting-edge projects with a collaborative and innovative environment.'}
+                </p>
+                <div className="job-footer">
+                  <span className="job-seats">🟢 {job.seats || 1} seats available</span>
+                  <Link to={`/jobs/${job._id || job.id}`} className="btn btn-primary btn-sm">Apply Now</Link>
                 </div>
               </div>
-              <div className="job-meta">
-                <span className="job-meta-item">📍 {job.branch}</span>
-                <span className="job-meta-item">🏢 {job.department}</span>
-                <span className="job-meta-item">💼 {job.type}</span>
-              </div>
-              <p className="job-description">
-                We are looking for talented professionals to join our growing team. 
-                Work on cutting-edge projects with a collaborative and innovative environment.
-              </p>
-              <div className="job-footer">
-                <span className="job-seats">🟢 {job.seats} seats available</span>
-                <Link to={`/jobs/${job.id}`} className="btn btn-primary btn-sm">Apply Now</Link>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Branch Locations */}
         <div className="dashboard-section" style={{ marginTop: '3rem' }}>
@@ -76,22 +107,22 @@ const Home = () => {
           <div className="stats-grid">
             <div className="stat-card purple">
               <div className="stat-icon">🏛️</div>
-              <div className="stat-value">Islamabad</div>
+              <div className="stat-value" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Islamabad</div>
               <div className="stat-label">Head Office — Blue Area</div>
             </div>
             <div className="stat-card teal">
               <div className="stat-icon">🏙️</div>
-              <div className="stat-value">Lahore</div>
+              <div className="stat-value" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Lahore</div>
               <div className="stat-label">Johar Town Tech Hub</div>
             </div>
             <div className="stat-card pink">
               <div className="stat-icon">🌊</div>
-              <div className="stat-value">Karachi</div>
+              <div className="stat-value" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Karachi</div>
               <div className="stat-label">Clifton Business Center</div>
             </div>
             <div className="stat-card yellow">
               <div className="stat-icon">🌐</div>
-              <div className="stat-value">Remote</div>
+              <div className="stat-value" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Remote</div>
               <div className="stat-label">Work From Anywhere</div>
             </div>
           </div>
