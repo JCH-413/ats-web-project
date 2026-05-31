@@ -1,14 +1,18 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { isLoggedIn, role: userRole, logout } = useAuth();
 
   const isActive = (path) => location.pathname === path ? 'active' : '';
 
-  // TODO: Replace with actual auth state from AuthContext
-  const isLoggedIn = false;
-  const userRole = null; // 'candidate', 'hr', or 'admin'
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <nav className="navbar">
@@ -31,7 +35,7 @@ const Navbar = () => {
             <Link to="/candidate/dashboard" className={isActive('/candidate/dashboard')}>Dashboard</Link>
             <Link to="/candidate/applications" className={isActive('/candidate/applications')}>My Applications</Link>
             <Link to="/candidate/profile" className={isActive('/candidate/profile')}>Profile</Link>
-            <button onClick={() => alert('Logout functionality coming soon')}>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
           </>
         ) : (
           <>
@@ -39,7 +43,7 @@ const Navbar = () => {
             <Link to="/hr/jobs" className={isActive('/hr/jobs')}>Manage Jobs</Link>
             <Link to="/hr/applicants" className={isActive('/hr/applicants')}>Applicants</Link>
             <Link to="/hr/interviews" className={isActive('/hr/interviews')}>Interviews</Link>
-            <button onClick={() => alert('Logout functionality coming soon')}>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
           </>
         )}
       </div>

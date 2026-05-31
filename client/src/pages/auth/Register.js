@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,12 +11,15 @@ const Register = () => {
     role: 'candidate',
   });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { register } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       setError('Please fill in all fields');
@@ -30,8 +34,20 @@ const Register = () => {
       return;
     }
     setError('');
-    // TODO: Connect to backend API
-    alert('Registration functionality will be connected to the backend API');
+    setLoading(true);
+    try {
+      const user = await register({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        role: formData.role,
+      });
+      navigate(user.role === 'candidate' ? '/candidate/dashboard' : '/hr/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Registration failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -73,7 +89,9 @@ const Register = () => {
             <label>Confirm Password</label>
             <input type="password" name="confirmPassword" className="form-control" placeholder="Repeat your password" value={formData.confirmPassword} onChange={handleChange} />
           </div>
-          <button type="submit" className="btn btn-primary btn-lg">Create Account</button>
+          <button type="submit" className="btn btn-primary btn-lg" disabled={loading}>
+            {loading ? 'Creating Account...' : 'Create Account'}
+          </button>
         </form>
 
         <div className="auth-footer">
