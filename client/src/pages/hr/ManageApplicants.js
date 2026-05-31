@@ -51,7 +51,7 @@ const ManageApplicants = () => {
   return (
     <div className="page-container fade-in">
       <div className="page-header">
-        <h1>👥 Manage Applicants</h1>
+        <h1>Manage Applicants</h1>
         <p>Review, shortlist, and manage all candidate applications</p>
       </div>
 
@@ -113,13 +113,13 @@ const ManageApplicants = () => {
                         </div>
                       </td>
                       <td>{positionTitle}</td>
-                      <td><span className="job-meta-item">📍 {branchName}</span></td>
+                      <td><span className="job-meta-item">{branchName}</span></td>
                       <td><span className={`badge ${getStatusBadge(app.status)}`}>{app.status}</span></td>
                       <td>{dateString}</td>
                       <td>
                         {app.resumeURL ? (
                           <a href={app.resumeURL} className="btn btn-secondary btn-sm" target="_blank" rel="noreferrer">
-                            📎 View
+                            View
                           </a>
                         ) : (
                           <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>None</span>
@@ -127,9 +127,9 @@ const ManageApplicants = () => {
                       </td>
                       <td>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
-                          <button className="btn btn-success btn-sm" onClick={() => handleStatusChange(app._id || app.id, 'Shortlisted')} title="Shortlist">✓</button>
-                          <button className="btn btn-danger btn-sm" onClick={() => handleStatusChange(app._id || app.id, 'Rejected')} title="Reject">✕</button>
-                          <button className="btn btn-secondary btn-sm" onClick={() => handleStatusChange(app._id || app.id, 'Interview Scheduled')} title="Schedule Interview">📅</button>
+                          <button className="btn btn-success btn-sm" onClick={() => handleStatusChange(app._id || app.id, 'Shortlisted')} title="Shortlist">Shortlist</button>
+                          <button className="btn btn-danger btn-sm" onClick={() => handleStatusChange(app._id || app.id, 'Rejected')} title="Reject">Reject</button>
+                          <button className="btn btn-secondary btn-sm" onClick={() => handleStatusChange(app._id || app.id, 'Interview Scheduled')} title="Schedule Interview">Interview</button>
                         </div>
                       </td>
                     </tr>

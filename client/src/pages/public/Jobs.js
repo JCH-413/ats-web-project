@@ -118,13 +118,13 @@ const Jobs = () => {
                   </div>
                 </div>
                 <div className="job-meta">
-                  <span className="job-meta-item">📍 {job.branch?.name || job.branch || 'Remote'}</span>
-                  <span className="job-meta-item">🏢 {job.department}</span>
-                  <span className="job-meta-item">💼 {job.type || 'Full-time'}</span>
+                  <span className="job-meta-item">{job.branch?.name || job.branch || 'Remote'}</span>
+                  <span className="job-meta-item">{job.department}</span>
+                  <span className="job-meta-item">{job.type || 'Full-time'}</span>
                 </div>
                 <p className="job-description">{job.description}</p>
                 <div className="job-footer">
-                  <span className="job-seats">🟢 {job.seats || 1} seats</span>
+                  <span className="job-seats">{job.seats || 1} seats</span>
                   <Link to={`/jobs/${job._id || job.id}`} className="btn btn-primary btn-sm">Apply Now</Link>
                 </div>
               </div>

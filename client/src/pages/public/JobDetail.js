@@ -107,10 +107,10 @@ const JobDetail = () => {
               <h1 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '0.5rem' }}>{job.title}</h1>
               <div style={{ color: 'var(--primary)', fontWeight: 600, marginBottom: '1rem' }}>OpsNex - {jobBranchName}</div>
               <div className="job-meta">
-                <span className="job-meta-item">📍 {jobBranchName}</span>
-                <span className="job-meta-item">🏢 {job.department}</span>
-                <span className="job-meta-item">💼 {job.type || 'Full-time'}</span>
-                <span className="job-meta-item">🟢 {job.seats || 1} seats available</span>
+                <span className="job-meta-item">{jobBranchName}</span>
+                <span className="job-meta-item">{job.department}</span>
+                <span className="job-meta-item">{job.type || 'Full-time'}</span>
+                <span className="job-meta-item">{job.seats || 1} seats available</span>
               </div>
             </div>
             <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', marginTop: '1.5rem' }}>Job Description</h3>
@@ -123,7 +123,7 @@ const JobDetail = () => {
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {job.requirements.map((req, i) => (
                   <li key={i} style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', display: 'flex', gap: '0.5rem' }}>
-                    <span style={{ color: 'var(--success)' }}>✓</span> {req}
+                    <span style={{ color: 'var(--success)' }}>•</span> {req}
                   </li>
                 ))}
               </ul>
@@ -136,7 +136,7 @@ const JobDetail = () => {
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {job.benefits.map((ben, i) => (
                   <li key={i} style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', display: 'flex', gap: '0.5rem' }}>
-                    <span style={{ color: 'var(--primary)' }}>★</span> {ben}
+                    <span style={{ color: 'var(--primary)' }}>•</span> {ben}
                   </li>
                 ))}
               </ul>
@@ -166,7 +166,7 @@ const JobDetail = () => {
 
             {applySuccess && (
               <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid var(--success)', borderRadius: 'var(--radius-sm)', padding: '0.75rem', marginBottom: '1rem', color: 'var(--success)', fontSize: '0.85rem', textAlign: 'center' }}>
-                🎉 Application submitted successfully!
+                Application submitted successfully!
               </div>
             )}
 

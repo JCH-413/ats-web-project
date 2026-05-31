@@ -86,11 +86,11 @@ const ManageInterviews = () => {
     <div className="page-container fade-in">
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
         <div>
-          <h1>📅 Manage Interviews</h1>
+          <h1>Manage Interviews</h1>
           <p>Schedule and track candidate interviews</p>
         </div>
         <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
-          {showForm ? '✕ Cancel' : '➕ Schedule Interview'}
+          {showForm ? 'Cancel' : 'Schedule Interview'}
         </button>
       </div>
 
@@ -133,7 +133,7 @@ const ManageInterviews = () => {
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <button type="submit" className="btn btn-success" disabled={saving}>
-                {saving ? 'Scheduling...' : '✓ Schedule & Notify'}
+                {saving ? 'Scheduling...' : 'Schedule & Notify'}
               </button>
               <button type="button" className="btn btn-secondary" onClick={() => setShowForm(false)}>Cancel</button>
             </div>
@@ -178,7 +178,7 @@ const ManageInterviews = () => {
                     <tr key={interview._id || interview.id}>
                       <td style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{candidateName}</td>
                       <td>{positionTitle}</td>
-                      <td><span className="job-meta-item">📍 {branchName}</span></td>
+                      <td><span className="job-meta-item">{branchName}</span></td>
                       <td>{interview.date}</td>
                       <td>{interview.time}</td>
                       <td>

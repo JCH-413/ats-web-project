@@ -92,7 +92,7 @@ const ManageJobs = () => {
           <p>Create, edit, and manage job postings across branches</p>
         </div>
         <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
-          {showForm ? '✕ Cancel' : '+ Post New Job'}
+          {showForm ? 'Cancel' : '+ Post New Job'}
         </button>
       </div>
 
@@ -149,7 +149,7 @@ const ManageJobs = () => {
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <button type="submit" className="btn btn-success" disabled={saving}>
-                {saving ? 'Publishing...' : '✓ Publish Job'}
+                {saving ? 'Publishing...' : 'Publish Job'}
               </button>
               <button type="button" className="btn btn-secondary" onClick={() => setShowForm(false)}>Cancel</button>
             </div>
@@ -190,7 +190,7 @@ const ManageJobs = () => {
                   <tr key={job._id || job.id}>
                     <td style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{job.title}</td>
                     <td>{job.department}</td>
-                    <td><span className="job-meta-item">📍 {job.branch?.name || job.branch || 'Remote'}</span></td>
+                    <td><span className="job-meta-item">{job.branch?.name || job.branch || 'Remote'}</span></td>
                     <td>{job.type || 'Full-time'}</td>
                     <td>{job.seats || 1}</td>
                     <td>

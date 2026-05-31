@@ -98,7 +98,7 @@ const MyApplications = () => {
                     <tr key={app._id || app.id}>
                       <td style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{positionTitle}</td>
                       <td>{department}</td>
-                      <td><span className="job-meta-item">📍 {branchName}</span></td>
+                      <td><span className="job-meta-item">{branchName}</span></td>
                       <td><span className={`badge ${getStatusBadge(app.status)}`}>{app.status}</span></td>
                       <td>{dateString}</td>
                       <td>

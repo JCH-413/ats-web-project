@@ -13,7 +13,17 @@ const branchRoutes = require('./routes/branchRoutes');
 const app = express();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://ats-web-project.vercel.app',
+  'https://ats-web-project-backend.vercel.app',
+];
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

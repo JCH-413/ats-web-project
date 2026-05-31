@@ -87,7 +87,7 @@ const Profile = () => {
   return (
     <div className="page-container fade-in">
       <div className="page-header">
-        <h1>👤 My Profile</h1>
+        <h1>My Profile</h1>
         <p>Manage your personal information and resume</p>
       </div>
 
@@ -113,18 +113,18 @@ const Profile = () => {
           <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1.5rem' }}>{formData.email}</p>
           
           <div style={{ textAlign: 'left', borderTop: '1px solid var(--border)', paddingTop: '1.25rem' }}>
-            <h4 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '1rem' }}>📎 Resume</h4>
+            <h4 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '1rem' }}>Resume</h4>
             <div style={{ background: 'var(--bg-input)', borderRadius: 'var(--radius-sm)', padding: '1rem', textAlign: 'center' }}>
               {resumeName ? (
                 <p style={{ color: 'var(--primary)', fontSize: '0.85rem', fontWeight: 500, marginBottom: '0.75rem' }}>
-                  📄 {resumeName}
+                  {resumeName}
                 </p>
               ) : (
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '0.75rem' }}>No resume uploaded yet (PDF only)</p>
               )}
               <input type="file" accept=".pdf" style={{ display: 'none' }} id="resume-upload" onChange={handleResumeUpload} />
               <label htmlFor="resume-upload" className="btn btn-primary btn-sm" style={{ cursor: 'pointer' }} disabled={uploadingResume}>
-                {uploadingResume ? 'Uploading...' : '📤 Upload Resume'}
+                {uploadingResume ? 'Uploading...' : 'Upload Resume'}
               </label>
             </div>
           </div>
@@ -132,7 +132,7 @@ const Profile = () => {
 
         {/* Edit Form */}
         <div className="card">
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>✏️ Edit Profile</h3>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>Edit Profile</h3>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Full Name</label>

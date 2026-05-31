@@ -42,10 +42,10 @@ const Home = () => {
           </p>
           <div className="hero-buttons">
             <Link to="/jobs" className="btn btn-primary btn-lg">
-              🔍 Browse Openings
+              Browse Openings
             </Link>
             <Link to="/register" className="btn btn-secondary btn-lg">
-              📄 Create Profile
+              Create Profile
             </Link>
           </div>
         </div>
@@ -54,7 +54,7 @@ const Home = () => {
       {/* Featured Jobs */}
       <div className="page-container">
         <div className="section-header">
-          <h2>🔥 Featured Openings</h2>
+          <h2>Featured Openings</h2>
           <Link to="/jobs" className="btn btn-secondary btn-sm">View All →</Link>
         </div>
 
@@ -83,15 +83,15 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="job-meta">
-                  <span className="job-meta-item">📍 {job.branch?.name || job.branch || 'Remote'}</span>
-                  <span className="job-meta-item">🏢 {job.department}</span>
-                  <span className="job-meta-item">💼 {job.type || 'Full-time'}</span>
+                  <span className="job-meta-item">{job.branch?.name || job.branch || 'Remote'}</span>
+                  <span className="job-meta-item">{job.department}</span>
+                  <span className="job-meta-item">{job.type || 'Full-time'}</span>
                 </div>
                 <p className="job-description">
                   {job.description || 'We are looking for talented professionals to join our growing team. Work on cutting-edge projects with a collaborative and innovative environment.'}
                 </p>
                 <div className="job-footer">
-                  <span className="job-seats">🟢 {job.seats || 1} seats available</span>
+                  <span className="job-seats">{job.seats || 1} seats available</span>
                   <Link to={`/jobs/${job._id || job.id}`} className="btn btn-primary btn-sm">Apply Now</Link>
                 </div>
               </div>
@@ -102,26 +102,22 @@ const Home = () => {
         {/* Branch Locations */}
         <div className="dashboard-section" style={{ marginTop: '3rem' }}>
           <div className="section-header">
-            <h2>🌍 Our Branches</h2>
+            <h2>Our Branches</h2>
           </div>
           <div className="stats-grid">
             <div className="stat-card purple">
-              <div className="stat-icon">🏛️</div>
               <div className="stat-value" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Islamabad</div>
               <div className="stat-label">Head Office — Blue Area</div>
             </div>
             <div className="stat-card teal">
-              <div className="stat-icon">🏙️</div>
               <div className="stat-value" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Lahore</div>
               <div className="stat-label">Johar Town Tech Hub</div>
             </div>
             <div className="stat-card pink">
-              <div className="stat-icon">🌊</div>
               <div className="stat-value" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Karachi</div>
               <div className="stat-label">Clifton Business Center</div>
             </div>
             <div className="stat-card yellow">
-              <div className="stat-icon">🌐</div>
               <div className="stat-value" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Remote</div>
               <div className="stat-label">Work From Anywhere</div>
             </div>
